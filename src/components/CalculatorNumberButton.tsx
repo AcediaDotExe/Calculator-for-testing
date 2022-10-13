@@ -9,17 +9,26 @@ interface CalculatorNumberButtonProps {
 const CalculatorNumberButton: FC<CalculatorNumberButtonProps> = ({ name}) => {
     const dispatch = useDispatch();
     // @ts-ignore
-    const operator = useSelector(state => state.operator);
+    const display = useSelector(state => state.display);
+    // @ts-ignore
+    const isOperatorChoosing = useSelector(state => state.isOperatorChoosing);
     // @ts-ignore
     const currentNumber = useSelector(state => state.currentNumber);
     // @ts-ignore
     const prevNumber = useSelector(state => state.prevNumber);
 
     function addToDisplay(e: MouseEvent<HTMLButtonElement>) {
-        if(operator !== null && currentNumber === prevNumber){
-
+        if(name === ".") {
+            if (!display.includes('.')) {
+                dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+            }
         } else {
-            dispatch({type:expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+            if (isOperatorChoosing === true) {
+                dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
+                dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+            } else {
+                dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+            }
         }
     }
 

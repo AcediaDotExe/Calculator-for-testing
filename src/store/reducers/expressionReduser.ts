@@ -53,17 +53,25 @@ export const expressionReducer = (state = initialState, action: ExpressionAction
                 isOperatorChoosing: true,};
         case expressionEndPoints.EQUAL: {
             const answer = do_operation(state.currentNumber, Number(state.prevNumber), state.operator);
-            console.log(Number(state.prevNumber));
-            console.log(Number(state.currentNumber));
-            console.log(state.operator);
-            console.log(answer);
-            return {
-                display: String(answer),
-                currentNumber: Number(answer),
-                prevNumber: null,
-                operator: state.operator,
-                isOperatorChoosing: false,
-            };
+            if(answer !== undefined)
+                if(action.payload !== "=")
+                    return {
+                        display: String(answer),
+                        currentNumber: Number(answer),
+                        prevNumber: Number(answer),
+                        operator: action.payload,
+                        isOperatorChoosing: true,
+                    };
+                else
+                    return {
+                        display: String(answer),
+                        currentNumber: Number(answer),
+                        prevNumber: null,
+                        operator: action.payload,
+                        isOperatorChoosing: false,
+                    };
+            else
+                return state;
         }
         default:
             return state

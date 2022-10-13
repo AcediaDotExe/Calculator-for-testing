@@ -9,6 +9,7 @@ export function do_operation(secondOperand: number, firstOperand: number, operat
         case "/":
             return divide(firstOperand, secondOperand)
         default:
+            return undefined;
     }
 }
 

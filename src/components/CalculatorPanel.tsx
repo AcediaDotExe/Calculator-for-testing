@@ -8,9 +8,10 @@ const CalculatorPanel: FC = () => {
 
     return (
         <div>
-            {memory}
-            {"AAAAAAAAAAAAAAAA"}
-            {display}
+            <div>
+                Prev: {memory}
+            </div>
+                Current: {display}
         </div>
     );
 };
