@@ -1,24 +1,32 @@
 import React, {FC, MouseEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {expressionEndPoints} from "../types/todo";
+import {Button, ThemeProvider} from "@mui/material";
+import {buttonsTheme} from "../materialUI/themes";
 
 interface CalculatorOperatorButtonProps{
     name: string,
+    style?: any,
 }
 
-const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name}) => {
+const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, style}) => {
     const dispatch = useDispatch();
-
+    // @ts-ignore
+    const display = useSelector(state => state.display);
     // @ts-ignore
     const prevNumber = useSelector(state => state.prevNumber);
     // @ts-ignore
-    const currentNumber = useSelector(state => state.currentNumber);
-    // @ts-ignore
     const isOperatorChoosing = useSelector(state => state.isOperatorChoosing);
-
+    const regExp = /[a-zA-Z]/g;
     function doOwnOperation(e: MouseEvent) {
+        if (regExp.test(display)){
+            dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
+        }
         if (name === "<") {
-            dispatch({type: expressionEndPoints.CLEAR_DISPLAY_SYMBOL})
+            if(display.length == 1)
+                dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
+            else
+                dispatch({type: expressionEndPoints.CLEAR_DISPLAY_SYMBOL})
         } else {
             if (name === "c") {
                 dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
@@ -45,9 +53,11 @@ const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name}) => 
     }
 
     return (
-        <button onClick={doOwnOperation}>
-            {name}
-        </button>
+        <ThemeProvider theme={buttonsTheme}>
+            <Button onClick={doOwnOperation} size="large" variant="contained" color="secondary" style={style}>
+                {name}
+            </Button>
+        </ThemeProvider>
     );
 };
 

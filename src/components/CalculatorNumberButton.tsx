@@ -1,12 +1,16 @@
 import React, {FC, MouseEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {expressionEndPoints} from "../types/todo";
+import {Button} from "@mui/material";
+import { ThemeProvider } from '@mui/material/styles';
+import {buttonsTheme} from "../materialUI/themes";
 
 interface CalculatorNumberButtonProps {
     name: string;
+    style?: any;
 }
 
-const CalculatorNumberButton: FC<CalculatorNumberButtonProps> = ({ name}) => {
+const CalculatorNumberButton: FC<CalculatorNumberButtonProps> = ({ name, style}) => {
     const dispatch = useDispatch();
     // @ts-ignore
     const display = useSelector(state => state.display);
@@ -16,27 +20,35 @@ const CalculatorNumberButton: FC<CalculatorNumberButtonProps> = ({ name}) => {
     const currentNumber = useSelector(state => state.currentNumber);
     // @ts-ignore
     const prevNumber = useSelector(state => state.prevNumber);
-
+    const regExp = /[a-zA-Z]/g;
     function addToDisplay(e: MouseEvent<HTMLButtonElement>) {
-        if(name === ".") {
-            if (!display.includes('.')) {
-                dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
-            }
-        } else {
-            if (isOperatorChoosing === true) {
+        if (display.length <= 22) {
+            if (regExp.test(display)){
                 dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
-                dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+            }
+            if (name === ".") {
+                if (!display.includes('.')) {
+                    dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+                }
             } else {
-                dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+                if (isOperatorChoosing === true) {
+                    dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
+                    dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+                } else {
+                    dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+                }
             }
         }
     }
 
     return (
-        <button onClick={addToDisplay}>
-            {name}
-        </button>
+        <ThemeProvider theme={buttonsTheme}>
+            <Button variant="contained" size="large" color="warning" onClick={addToDisplay} style={style}>
+                {name}
+            </Button>
+        </ThemeProvider>
     );
 };
+
 
 export default CalculatorNumberButton;
