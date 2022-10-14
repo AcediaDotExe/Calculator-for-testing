@@ -7,8 +7,11 @@ const CalculatorDeletingKeyboard = () => {
             <CalculatorOperatorButton name={"c"}
                                       style={{
                                           minWidth: '128px',
-                                          minHeight: '40px'}}/>
-            <CalculatorOperatorButton name={"<"}/>
+                                          minHeight: '40px'}}
+                                      id={"clear"}
+            />
+            <CalculatorOperatorButton name={"<"}
+                                      id={"del"}/>
         </div>
     );
 };

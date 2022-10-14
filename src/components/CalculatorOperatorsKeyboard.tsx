@@ -11,28 +11,33 @@ const CalculatorOperatorsKeyboard = () => {
                                       style={{
                                           minWidth: '64px',
                                           minHeight: '105px'}}
+                                      id={"plus"}
             />
             <CalculatorOperatorButton name={"-"}
                                       style={{
                                           minWidth: '64px',
                                           minHeight: '105px'}}
+                                      id={"minus"}
             />
             <br/>
             <CalculatorOperatorButton name={"*"}
                                       style={{
                                           minWidth: '64px',
                                           minHeight: '40px'}}
+                                      id={"mul"}
             />
             <CalculatorOperatorButton name={"/"}
                                       style={{
                                           minWidth: '64px',
                                           minHeight: '40px'}}
+                                      id={"d"}
             />
             <br/>
             <CalculatorOperatorButton name={"="}
                                       style={{
                                           minWidth: '128px',
                                           minHeight: '65px'}}
+                                      id={"equal"}
             />
 
         </Grid>

@@ -10,13 +10,13 @@ const CalculatorPanel: FC = () => {
     return (
         <div>
             <Typography fontSize={16} textAlign="right" style={{color: '#893101'}} component={'span'}>
-                <div data-testid="memory-display">
+                <div data-testid="memory-display" id="memory-display">
                     {(memory != null ? memory : <> empty</>)}
                 </div>
             </Typography>
 
             <Typography fontSize={24} textAlign="right" style={{color: '#FFA500'}} component={'span'}>
-                <div data-testid="main-display">
+                <div data-testid="main-display" id="main-display">
                     {display}
                 </div>
             </Typography>

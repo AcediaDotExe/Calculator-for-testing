@@ -7,9 +7,10 @@ import {buttonsTheme} from "../materialUI/themes";
 interface CalculatorOperatorButtonProps{
     name: string,
     style?: any,
+    id: string,
 }
 
-const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, style}) => {
+const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, style, id}) => {
     const dispatch = useDispatch();
     // @ts-ignore
     const display = useSelector(state => state.display);
@@ -23,7 +24,7 @@ const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, styl
             dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
         }
         if (name === "<") {
-            if(display.length == 1) {
+            if(display.length === 1) {
                 dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
             } else {
                 dispatch({type: expressionEndPoints.CLEAR_DISPLAY_SYMBOL})
@@ -58,7 +59,7 @@ const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, styl
     return (
         <ThemeProvider theme={buttonsTheme}>
             <Button onClick={doOwnOperation} size="large" variant="contained" color="secondary" style={style}
-                    data-testid={name}
+                    data-testid={name} id={"b" + id}
             >
                 {name}
             </Button>
