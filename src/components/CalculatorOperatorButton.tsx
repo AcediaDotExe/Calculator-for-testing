@@ -1,6 +1,6 @@
 import React, {FC, MouseEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {expressionEndPoints} from "../types/todo";
+import {expressionEndPoints} from "../types/types";
 import {Button, ThemeProvider} from "@mui/material";
 import {buttonsTheme} from "../materialUI/themes";
 
@@ -23,10 +23,11 @@ const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, styl
             dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
         }
         if (name === "<") {
-            if(display.length == 1)
+            if(display.length == 1) {
                 dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
-            else
+            } else {
                 dispatch({type: expressionEndPoints.CLEAR_DISPLAY_SYMBOL})
+            }
         } else {
             if (name === "c") {
                 dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
@@ -49,7 +50,9 @@ const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, styl
                 }
             }
         }
-
+        if (regExp.test(display)){
+            dispatch({type: expressionEndPoints.CLEAR_FULL_DISPLAY})
+        }
     }
 
     return (

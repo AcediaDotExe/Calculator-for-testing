@@ -32,6 +32,9 @@ export const buttonsTheme = createTheme({
     status: {
         danger: '#e53e3e',
     },
+    shape: {
+        borderRadius: 1,
+    },
     palette: {
         primary: {
             main: '#0971f1',
@@ -45,6 +48,7 @@ export const buttonsTheme = createTheme({
             main: '#2B2D2F',
             darker: '#000000',
         },
+
         neutral: {
             main: '#64748B',
             contrastText: '#fff',

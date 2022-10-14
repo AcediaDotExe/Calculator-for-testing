@@ -1,6 +1,6 @@
-import {ExpressionAction, ExpressionState} from "../../types/todo";
-import {do_operation} from "../../model/Computation";
-import {expressionEndPoints} from "../../types/todo";
+import {ExpressionAction, ExpressionState} from "../../types/types";
+import {do_operation} from "../../model/сomputations";
+import {expressionEndPoints} from "../../types/types";
 
 const initialState: ExpressionState = {
     currentNumber: 0,

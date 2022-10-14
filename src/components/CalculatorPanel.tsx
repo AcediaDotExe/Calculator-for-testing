@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { useSelector} from "react-redux";
-import {ExpressionState} from "../types/todo";
+import {ExpressionState} from "../types/types";
 import {Typography} from "@mui/material";
 
 const CalculatorPanel: FC = () => {
@@ -9,11 +9,11 @@ const CalculatorPanel: FC = () => {
 
     return (
         <div>
-            <Typography fontSize={16} textAlign="right">
+            <Typography fontSize={16} textAlign="right" style={{color: '#893101'}}>
                 {(memory != null ? memory : <> empty</>)}
             </Typography>
 
-            <Typography fontSize={24} textAlign="right">
+            <Typography fontSize={24} textAlign="right" style={{color: '#FFA500'}}>
                 {display}
             </Typography>
         </div>

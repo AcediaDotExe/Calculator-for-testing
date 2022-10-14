@@ -1,6 +1,6 @@
 import React, {FC, MouseEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {expressionEndPoints} from "../types/todo";
+import {expressionEndPoints} from "../types/types";
 import {Button} from "@mui/material";
 import { ThemeProvider } from '@mui/material/styles';
 import {buttonsTheme} from "../materialUI/themes";
@@ -28,7 +28,10 @@ const CalculatorNumberButton: FC<CalculatorNumberButtonProps> = ({ name, style})
             }
             if (name === ".") {
                 if (!display.includes('.')) {
-                    dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
+                    if (display === "0" || display.length === 0){
+                        dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: "0" + name})
+                    } else
+                        dispatch({type: expressionEndPoints.ADD_TO_DISPLAY, payload: name})
                 }
             } else {
                 if (isOperatorChoosing === true) {

@@ -7,11 +7,11 @@ const Calculator: FC = () => {
     return (
         <Box sx={{
             mt: '250px',
-            bgcolor: 'text.disabled',
+            bgcolor: '#FFFFFF',
             border: 3,
             borderColor: '#000000',
             borderRadius: '10px',
-            boxShadow: 10,
+            boxShadow: 20,
         }}
         >
             <CalculatorPanel/>
