@@ -57,7 +57,9 @@ const CalculatorOperatorButton: FC<CalculatorOperatorButtonProps> = ({name, styl
 
     return (
         <ThemeProvider theme={buttonsTheme}>
-            <Button onClick={doOwnOperation} size="large" variant="contained" color="secondary" style={style}>
+            <Button onClick={doOwnOperation} size="large" variant="contained" color="secondary" style={style}
+                    data-testid={name}
+            >
                 {name}
             </Button>
         </ThemeProvider>

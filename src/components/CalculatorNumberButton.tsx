@@ -46,7 +46,9 @@ const CalculatorNumberButton: FC<CalculatorNumberButtonProps> = ({ name, style})
 
     return (
         <ThemeProvider theme={buttonsTheme}>
-            <Button variant="contained" size="large" color="warning" onClick={addToDisplay} style={style}>
+            <Button variant="contained" size="large" color="warning" onClick={addToDisplay} style={style}
+                    data-testid={name}
+            >
                 {name}
             </Button>
         </ThemeProvider>

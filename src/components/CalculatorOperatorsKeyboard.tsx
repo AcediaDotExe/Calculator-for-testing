@@ -17,7 +17,7 @@ const CalculatorOperatorsKeyboard = () => {
                                           minWidth: '64px',
                                           minHeight: '105px'}}
             />
-            <tr/>
+            <br/>
             <CalculatorOperatorButton name={"*"}
                                       style={{
                                           minWidth: '64px',
@@ -28,7 +28,7 @@ const CalculatorOperatorsKeyboard = () => {
                                           minWidth: '64px',
                                           minHeight: '40px'}}
             />
-            <tr/>
+            <br/>
             <CalculatorOperatorButton name={"="}
                                       style={{
                                           minWidth: '128px',

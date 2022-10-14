@@ -6,6 +6,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.9",
+    "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -26,6 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
+    "test lib": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,7 +50,9 @@
   },
   "devDependencies": {
     "@types/react-test-renderer": "^18.0.0",
+    "jest-environment-jsdom": "^29.2.0",
     "react-test-renderer": "^18.2.0",
+    "redux-mock-store": "^1.5.4",
     "ts-jest": "^29.0.3"
   }
 }

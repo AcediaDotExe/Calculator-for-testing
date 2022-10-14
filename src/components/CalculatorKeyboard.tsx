@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Grid} from "@mui/material";
+import {Box, Grid} from "@mui/material";
 import CalculatorNumbersKeyboard from "./CalculatorNumbersKeyboard";
 import CalculatorOperatorsKeyboard from "./CalculatorOperatorsKeyboard";
 import CalculatorDeletingKeyboard from "./CalculatorDeletingKeyboard";
@@ -9,15 +9,11 @@ const CalculatorKeyboard: FC = () => {
         <Grid
             container
             direction="row"
-            zeroMinWidth
         >
-            <Grid
-                direction="column"
-            >
-
+            <Box>
                 <CalculatorDeletingKeyboard/>
                 <CalculatorNumbersKeyboard/>
-            </Grid>
+            </Box>
             <CalculatorOperatorsKeyboard/>
         </Grid>
     );

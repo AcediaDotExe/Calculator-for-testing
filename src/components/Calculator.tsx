@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import CalculatorPanel from "./CalculatorPanel";
 import CalculatorKeyboard from "./CalculatorKeyboard";
-import {Box, Container, Grid} from "@mui/material";
+import {Box} from "@mui/material";
 
 const Calculator: FC = () => {
     return (

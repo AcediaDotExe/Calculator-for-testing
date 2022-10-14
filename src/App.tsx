@@ -6,7 +6,6 @@ import {Grid} from "@mui/material";
 
 function App() {
   return (
-    <Provider store={store}>
         <Grid
             container
             direction="column"
@@ -15,7 +14,6 @@ function App() {
         >
             <Calculator/>
         </Grid>
-    </Provider>
   );
 }
 
